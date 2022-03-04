@@ -1,0 +1,28 @@
+
+version: 2
+
+models:
+    - name: nps_survey_zookal_study
+      description: "NPS for ZS"
+      columns:
+          - name: response_id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+    - name: nps_survey_ecomm
+      description: "NPS for eComm"
+      columns:
+          - name: response_id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+    - name: survey_response
+      description: "All surveys from Alchemer"
+      columns:
+          - name: concat(survey_id::STRING, '|', response_id::STRING, '|', survey_data_id::STRING)
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
